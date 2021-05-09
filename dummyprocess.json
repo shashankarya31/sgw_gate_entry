@@ -1,0 +1,8 @@
+
+{
+    "env": {
+        "MONGO_ATLAS_USER": "shashank",
+        "MONGO_ATLAS_PW": "SA@2582580",
+        "JWT_KEY": "Saint-gobainweber@2017"
+    }
+}
