@@ -6,10 +6,12 @@ const mongoose = require('mongoose');
 const process = require('./dummyprocess.json');
 
 
+const dataRoutes = require('./routes/dataRoutes');
+
 mongoose.connect(
     'mongodb+srv://' + process.env.MONGO_ATLAS_USER + ':' +
     process.env.MONGO_ATLAS_PW +
-    '@gate-entry.cdjrb.mongodb.net/test',
+    '@gate-entry.cdjrb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
     { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }
 );
 
@@ -31,7 +33,7 @@ app.use((req, res, next) => {
 });
 
 //enter useful routes
-
+app.use('/data', dataRoutes);
 //end of useful routes
 
 app.use((req, res, next) => {
