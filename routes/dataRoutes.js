@@ -2,8 +2,10 @@ const express = require('express');
 const router = express.Router();
 const dataController = require('../controllers/dataController');
 
-router.post('/send', dataController.sendData);
+const checkAuth = require('./../middleware/checkAuth');
 
-router.get('/view', dataController.viewData);
+router.post('/send', checkAuth, dataController.sendData);
+
+router.get('/view', checkAuth, dataController.viewData);
 
 module.exports = router;

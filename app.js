@@ -3,10 +3,10 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const process = require('./dummyprocess.json');
 
 
 const dataRoutes = require('./routes/dataRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 mongoose.connect(
     'mongodb+srv://' + process.env.MONGO_ATLAS_USER + ':' +
@@ -33,7 +33,10 @@ app.use((req, res, next) => {
 });
 
 //enter useful routes
+
 app.use('/data', dataRoutes);
+app.use('/user', userRoutes);
+
 //end of useful routes
 
 app.use((req, res, next) => {
