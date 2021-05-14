@@ -72,9 +72,8 @@ exports.createUser = async (req, res, next) => {
 
 exports.loginUser = async (req, res, next) => {
     try {
-
+        console.log(req.body);
         const user = await User.findOne({ email: req.body.email });
-        console.log(user);
         if (user) {
             console.log(user);
             const pass = req.body.password;
@@ -90,24 +89,23 @@ exports.loginUser = async (req, res, next) => {
                 {
                     expiresIn: '3h'
                 });
-                res.status(200).json({
-                    message: 'Correct Credentials!',
-                    user: {
-                        email: user.email,
-                        firstName: user.fname,
-                        lastName: user.lname,
-                        token: token
-                    }
-                });
+
+                let no_days = 1;
+                let cookieOptions = {
+                    expires: new Date(Date.now() + no_days * 24 * 60 * 60 * 1000),
+                    httpOnly: true
+                };
+
+                res.status(200)
+                    .cookie('jwt', token, cookieOptions)
+                    .redirect('/data/view');
+        
             } else {
-                res.status(401).json({
-                    message: 'Incorrect credentials!'
-                });
+                res.status(401).render('error', { message: 'Invalid credentials!' });
             }
         }
 
     } catch (err) {
-        console.log('Error in middleware!');
         console.error(err);
     }
 };
