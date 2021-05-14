@@ -108,6 +108,6 @@ exports.loginUser = async (req, res, next) => {
 
     } catch (err) {
         console.log('Error in middleware!');
-        console.err(err);
+        console.error(err);
     }
 };

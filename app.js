@@ -4,7 +4,11 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+const path = __dirname + '/views';
+app.use(express.static(path));
+app.set('view engine', 'ejs');
 
+const indexRoutes = require('./routes/indexRoutes');
 const dataRoutes = require('./routes/dataRoutes');
 const userRoutes = require('./routes/userRoutes');
 
@@ -34,6 +38,7 @@ app.use((req, res, next) => {
 
 //enter useful routes
 
+app.use('/', indexRoutes);
 app.use('/data', dataRoutes);
 app.use('/user', userRoutes);
 

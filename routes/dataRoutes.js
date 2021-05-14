@@ -4,8 +4,11 @@ const dataController = require('../controllers/dataController');
 
 const checkAuth = require('./../middleware/checkAuth');
 
-router.post('/send', checkAuth, dataController.sendData);
+router.get('/send', dataController.sendDataForm);
 
-router.get('/view', checkAuth, dataController.viewData);
+router.post('/send', dataController.sendData);
+
+router.get('/view', dataController.viewData);
+
 
 module.exports = router;

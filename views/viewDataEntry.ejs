@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saint-Gobain Weber Gate Entry Data</title>
+</head>
+<body>
+    <div>
+        <% if (!record) { %> 
+            <div>No data!</div>>
+        <% } else { %>
+                <div class="record">
+                    <p class="time"><%= record.datetime.toLocaleString('en-US', date_options) %></p>
+                    <p><%= record.gateEntryNumber %></p>
+                    <p><%= record.vehicleNumber %></p>
+                    <p><%= record.party %></p>
+                    <p><%= record.transporter %></p>
+                    <p><%= record.driver %></p>
+                    <p><%= record.driverContactNumber %></p>
+                    <p><%= record.vehicleCapacity %></p>
+                    <p><%= record.pucDate %></p>
+                    <p><%= record.destination %></p>
+                    <p><%= record.driverLicense %></p>
+                    <p><%= record.driverLicenseState %></p>
+                    <p><%= record.driverAddress %></p>
+                    
+                </div>                
+
+        <% } %>
+
+        <form action="/data/send" method="get">
+            <input type="submit" value="New Entry">
+        </form>
+    </div>
+
+</body>
+</html>
