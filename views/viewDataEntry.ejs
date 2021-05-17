@@ -5,35 +5,167 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saint-Gobain Weber Gate Entry Data</title>
+
+    <link rel="stylesheet" href="/views/assets/styles/main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 </head>
 <body>
-    <div>
+    <div class="container">
         <% if (!record) { %> 
             <div>No data!</div>>
         <% } else { %>
-                <div class="record">
-                    <p class="time"><%= record.datetime.toLocaleString('en-US', date_options) %></p>
-                    <p><%= record.gateEntryNumber %></p>
-                    <p><%= record.vehicleNumber %></p>
-                    <p><%= record.party %></p>
-                    <p><%= record.transporter %></p>
-                    <p><%= record.driver %></p>
-                    <p><%= record.driverContactNumber %></p>
-                    <p><%= record.vehicleCapacity %></p>
-                    <p><%= record.pucDate %></p>
-                    <p><%= record.destination %></p>
-                    <p><%= record.driverLicense %></p>
-                    <p><%= record.driverLicenseState %></p>
-                    <p><%= record.driverAddress %></p>
-                    
-                </div>                
+                <div class="record card row" style="margin: 20px 0; box-shadow: 3px 3px 10px 1px rgba(0, 0, 0, 0.2);">
+                    <div class="card-header">
+                        <h5 class="time">Gate entry at <%= record.datetime.toLocaleString('en-US', date_options) %>
+                        </h5>
+                    </div>
+                
+                
+                    <table class="table table-sm table-bordered" style="margin: 0;">
+                        <tbody>
+                            <tr>
+                                <td style="width: 25%;">Gate Entry Number</td>
+                                <td>
+                                    <p class="float-left" style="margin: 0;" id="gen_<%= record._id %>">
+                                        <%= record.gateEntryNumber %>
+                                    </p>
+                                    <button class="btn btn-sm btn-outline-dark float-right" style="padding: 0 4px;"
+                                        onclick="copyText('gen_' + '<%= record._id %>')">Copy</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 25%;">Vehicle Number</td>
+                                <td>
+                                    <p class="float-left" style="margin: 0;" id="vn_<%= record._id %>">
+                                        <%= record.vehicleNumber %>
+                                    </p>
+                                    <button class="btn btn-sm btn-outline-dark float-right" style="padding: 2px 4px;"
+                                        onclick="copyText('vn_' + '<%= record._id %>')">Copy</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 25%;">Party</td>
+                                <td>
+                                    <p class="float-left" style="margin: 0;" id="p_<%= record._id %>">
+                                        <%= record.party %>
+                                    </p>
+                                    <button class="btn btn-sm btn-outline-dark float-right" style="padding: 2px 4px;"
+                                        onclick="copyText('p_' + '<%= record._id %>')">Copy</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 25%;">Transporter</td>
+                                <td>
+                                    <p class="float-left" style="margin: 0;" id="t_<%= record._id %>">
+                                        <%= record.transporter %>
+                                    </p>
+                                    <button class="btn btn-sm btn-outline-dark float-right" style="padding: 2px 4px;"
+                                        onclick="copyText('t_' + '<%= record._id %>')">Copy</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 25%;">Driver's Name</td>
+                                <td>
+                                    <p class="float-left" style="margin: 0;" id="dn_<%= record._id %>">
+                                        <%= record.driver %>
+                                    </p>
+                                    <button class="btn btn-sm btn-outline-dark float-right" style="padding: 2px 4px;"
+                                        onclick="copyText('dn_' + '<%= record._id %>')">Copy</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 25%;">Driver's Contact Number</td>
+                                <td>
+                                    <p class="float-left" style="margin: 0;" id="dcn_<%= record._id %>">
+                                        <%= record.driverContactNumber %>
+                                    </p>
+                                    <button class="btn btn-sm btn-outline-dark float-right" style="padding: 2px 4px;"
+                                        onclick="copyText('dcn_' + '<%= record._id %>')">Copy</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 25%;">Vehicle Capacity</td>
+                                <td>
+                                    <p class="float-left" style="margin: 0;" id="vc_<%= record._id %>">
+                                        <%= record.vehicleCapacity %>
+                                    </p>
+                                    <button class="btn btn-sm btn-outline-dark float-right" style="padding: 2px 4px;"
+                                        onclick="copyText('vc_' + '<%= record._id %>')">Copy</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 25%;">P. U. C. Date</td>
+                                <td>
+                                    <p class="float-left" style="margin: 0;" id="puc_<%= record._id %>">
+                                        <%= record.pucDate %>
+                                    </p>
+                                    <button class="btn btn-sm btn-outline-dark float-right" style="padding: 2px 4px;"
+                                        onclick="copyText('puc_' + '<%= record._id %>')">Copy</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 25%;">Destination</td>
+                                <td>
+                                    <p class="float-left" style="margin: 0;" id="d_<%= record._id %>">
+                                        <%= record.destination %>
+                                    </p>
+                                    <button class="btn btn-sm btn-outline-dark float-right" style="padding: 2px 4px;"
+                                        onclick="copyText('d_' + '<%= record._id %>')">Copy</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 25%;">Driver's License Number</td>
+                                <td>
+                                    <p class="float-left" style="margin: 0;" id="dln_<%= record._id %>">
+                                        <%= record.driverLicense %>
+                                    </p>
+                                    <button class="btn btn-sm btn-outline-dark float-right" style="padding: 2px 4px;"
+                                        onclick="copyText('dln_' + '<%= record._id %>')">Copy</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 25%;">Driver's License State</td>
+                                <td>
+                                    <p class="float-left" style="margin: 0;" id="dls_<%= record._id %>">
+                                        <%= record.driverLicenseState %>
+                                    </p>
+                                    <button class="btn btn-sm btn-outline-dark float-right" style="padding: 2px 4px;"
+                                        onclick="copyText('dls_' + '<%= record._id %>')">Copy</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 25%;">Driver's Address</td>
+                                <td>
+                                    <p class="float-left" style="margin: 0;" id="da_<%= record._id %>">
+                                        <%= record.driverAddress %>
+                                    </p>
+                                    <button class="btn btn-sm btn-outline-dark float-right" style="padding: 2px 4px;"
+                                        onclick="copyText('da_' + '<%= record._id %>')">Copy</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                
+                </div>
 
         <% } %>
 
-        <form action="/data/send" method="get">
-            <input type="submit" value="New Entry">
+        <form class="form-group" action="/data/send" method="get">
+            <input class="btn btn-primary form-control" type="submit" value="New Entry">
         </form>
     </div>
+
+    <script src="/views/assets/scripts/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+        crossorigin="anonymous"></script>
 
 </body>
 </html>

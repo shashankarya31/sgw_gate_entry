@@ -103,9 +103,18 @@ exports.loginUser = async (req, res, next) => {
             } else {
                 res.status(401).render('error', { message: 'Invalid credentials!' });
             }
+        } else {
+            res.status(401).render('error', { message: 'Invalid credentials!' });
         }
 
     } catch (err) {
         console.error(err);
     }
+};
+
+exports.logoutUser = async (req, res, next) => {
+
+    res.status(200)
+        .clearCookie("jwt")
+        .redirect('/');
 };

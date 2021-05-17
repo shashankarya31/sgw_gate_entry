@@ -6,28 +6,96 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saint-Gobain Weber Gate Entry Data</title>
+
+    <link rel="stylesheet" href="/views/assets/styles/main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 </head>
 
 <body>
-    <div>
-        <form action="/data/send" method="post">
-            <input type="text" name="gateEntryNumber" id="gateEntryNumber" placeholder="Gate Entry Number">
-            <input type="text" name="vehicleNumber" id="vehicleNumber" placeholder="Vehicle Number">
-            <input type="text" name="party" id="party" placeholder="Party">
-            <input type="text" name="transporter" id="transporter" placeholder="Transporter">
-            <input type="text" name="driver" id="driver" placeholder="Driver">
-            <input type="text" name="driverContactNumber" id="driverContactNumber" placeholder="Driver Contact Number">
-            <input type="text" name="vehicleCapacity" id="vehicleCapacity" placeholder="Vehicle Capacity">
-            <input type="date" name="pucDate" id="pucDate">
-            <input type="text" name="destination" id="destination" placeholder="Destination">
-            <input type="text" name="driverLicense" id="driverLicense" placeholder="Driver License">
-            <input type="text" name="driverLicenseState" id="driverLicenseState" placeholder="Driver License State">
-            <input type="text" name="driverAddress" id="driverAddress" placeholder="Driver Address">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/"><img src="/views/assets/img/logo.png" alt="Saint Gobain Logo" height="50"></a>
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/data/view">View Data</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/data/send">Send Data<span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" action="/user/logout" method="GET">
+                <input class="btn btn-outline-danger my-2 my-sm-0" type="submit" value="Log out">
+            </form>
+        </div>
+    </nav>
 
-            <input type="submit" value="SUBMIT">
+    <div class="container login-form" style="margin-top: 20px;">
+        <form action="/data/send" method="post">
+            <div class="form-group">
+                <label class="form-label" for="gateEntryNumber">Gate Entry Number</label>
+                <input type="text" class="form-control"  name="gateEntryNumber" id="gateEntryNumber" placeholder="Gate Entry Number">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="vehicleNumber">Vehicle Number</label>
+                <input type="text" class="form-control"  name="vehicleNumber" id="vehicleNumber" placeholder="Vehicle Number">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="Party">Party</label>
+                <input type="text" class="form-control"  name="party" id="party" placeholder="Party">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="transporter">Transporter</label>
+                <input type="text" class="form-control"  name="transporter" id="transporter" placeholder="Transporter">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="driver">Driver's Name</label>
+                <input type="text" class="form-control"  name="driver" id="driver" placeholder="Driver">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="driverContactNumber">Driver Contact Number</label>
+                <input type="text" class="form-control"  name="driverContactNumber" id="driverContactNumber" placeholder="Driver Contact Number">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="vehicleCapacity">Vehicle Capacity</label>
+                <input type="text" class="form-control"  name="vehicleCapacity" id="vehicleCapacity" placeholder="Vehicle Capacity">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="pucDate">P. U. C. Date</label>
+                <input type="date" class="form-control" name="pucDate" id="pucDate">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="destination">Destination</label>
+                <input type="text" class="form-control"  name="destination" id="destination" placeholder="Destination">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="driverLicense">Driver License</label>
+                <input type="text" class="form-control"  name="driverLicense" id="driverLicense" placeholder="Driver License">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="driverLicenseState">Driver License State</label>
+                <input type="text" class="form-control"  name="driverLicenseState" id="driverLicenseState" placeholder="Driver License State">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="driverAddress">Driver's Address</label>
+                <textarea type="text" class="form-control" name="driverAddress" id="driverAddress" placeholder="Driver Address"></textarea>
+            </div>
+            <input type="submit" class="btn btn-primary form-control" value="SUBMIT">
 
         </form>
     </div>
+
+    <script src="/views/assets/scripts/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

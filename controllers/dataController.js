@@ -27,7 +27,7 @@ exports.sendData = async(req, res, next) => {
         let data = new Data(newData);
         await data.save();
         console.log(data);
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+        const options = {year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
         res.status(201).render('viewDataEntry', {record: data, date_options: options});
             
     } catch(err) {
@@ -39,11 +39,11 @@ exports.viewData = async (req, res, next) => {
     try {
         const data = await Data
             .find()
-            .select('gateEntryNumber vehicleNumber party transporter driver driverContactNumber vehicleCapacity pucDate destination driverLicense driverLicenseState driverAddress datetime')
+            .select('_id gateEntryNumber vehicleNumber party transporter driver driverContactNumber vehicleCapacity pucDate destination driverLicense driverLicenseState driverAddress datetime')
             .sort({ datetime: 'desc' });
 
         const no_records = data.length;
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+        const options = {year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
 
         res.status(200).render('viewData', { 
             no_records: no_records,

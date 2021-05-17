@@ -4,8 +4,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-const path = __dirname + '/views';
-app.use(express.static(path));
+app.use(express.static(__dirname + '/'));
 app.set('view engine', 'ejs');
 
 const indexRoutes = require('./routes/indexRoutes');
