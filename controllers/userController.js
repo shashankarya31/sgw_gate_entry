@@ -27,7 +27,6 @@ exports.getUsers = async (req, res, next) => {
 };
 
 exports.createUser = async (req, res, next) => {
-    console.log(req.body);
     let user = {
         _id: new mongoose.Types.ObjectId,
         email: req.body.email,
@@ -72,7 +71,6 @@ exports.createUser = async (req, res, next) => {
 
 exports.loginUser = async (req, res, next) => {
     try {
-        console.log(req.body);
         const user = await User.findOne({ email: req.body.email });
         if (user) {
             console.log(user);

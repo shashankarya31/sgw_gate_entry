@@ -26,7 +26,6 @@ exports.sendData = async(req, res, next) => {
     try {
         let data = new Data(newData);
         await data.save();
-        console.log(data);
         const options = {year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
         res.status(201).render('viewDataEntry', {record: data, date_options: options});
             
