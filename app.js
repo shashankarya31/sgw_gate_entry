@@ -14,7 +14,7 @@ const userRoutes = require('./routes/userRoutes');
 mongoose.connect(
     'mongodb+srv://' + process.env.MONGO_ATLAS_USER + ':' +
     process.env.MONGO_ATLAS_PW +
-    '@gate-entry.cdjrb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+    '@' + process.env.DB_CONNECTION + '/' + process.env.DB_NAME + '?retryWrites=true&w=majority',
     { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }
 );
 
